@@ -90,7 +90,9 @@ public class Launcher {
      */
     public Level makeLevel() {
         try {
-            return getMapParser().parseMap(getLevelMap());
+            final MapParser parser = new MapParser(getLevelFactory(), getBoardFactory());
+            final String mapName = getLevelMap();
+            return parser.parseMap(mapName);
         } catch (IOException e) {
             throw new PacmanConfigurationException(
                     "Unable to create level, name = " + getLevelMap(), e);
