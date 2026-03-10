@@ -182,6 +182,11 @@ public class MapParser {
      * @param text Map to be checked
      * @throws PacmanConfigurationException if map is not OK.
      */
+
+    // Refactoring note:
+    // This method originally contained multiple validation checks that increased
+    // cyclomatic complexity. The validation steps were extracted into helper
+    // methods to improve readability
     private void checkMapFormat(List<String> text) {
         validateTextNotNull(text);
         validateTextNotEmpty(text);
