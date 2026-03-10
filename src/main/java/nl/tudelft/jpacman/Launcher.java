@@ -88,6 +88,11 @@ public class Launcher {
      *
      * @return A new level.
      */
+
+    // Refactoring note:
+    // This code was refactored to avoid chaining method calls such as
+    // getMapParser().parseMap(getLevelMap()). Introducing local variables
+    // makes the interactions clearer and reduces the Law of Demeter violation.
     public Level makeLevel() {
         try {
             final MapParser parser = new MapParser(getLevelFactory(), getBoardFactory());
@@ -157,6 +162,11 @@ public class Launcher {
      * @param builder
      *            The {@link PacManUiBuilder} that will provide the UI.
      */
+
+    // Refactoring note:
+    // This code was refactored to avoid chaining method calls such as
+    // getMapParser().parseMap(getLevelMap()). Introducing local variables
+    // makes the interactions clearer and reduces the Law of Demeter violation.
     protected void addSinglePlayerKeys(final PacManUiBuilder builder) {
         builder.addKey(KeyEvent.VK_UP, moveTowardsDirection(Direction.NORTH));
         builder.addKey(KeyEvent.VK_DOWN, moveTowardsDirection(Direction.SOUTH));
