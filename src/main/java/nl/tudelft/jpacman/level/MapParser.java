@@ -183,23 +183,38 @@ public class MapParser {
      * @throws PacmanConfigurationException if map is not OK.
      */
     private void checkMapFormat(List<String> text) {
+        validateTextNotNull(text);
+        validateTextNotEmpty(text);
+        int width = getMapWidth(text);
+        validateLineWidths(text, width);
+    }
+
+    private void validateTextNotNull(List<String> text){
         if (text == null) {
             throw new PacmanConfigurationException(
                 "Input text cannot be null.");
         }
+    }
 
+    private void validateTextNotEmpty(List<String> text){
         if (text.isEmpty()) {
             throw new PacmanConfigurationException(
                 "Input text must consist of at least 1 row.");
         }
+    }
 
+    private int getMapWidth(List<String> text){
         int width = text.get(0).length();
 
         if (width == 0) {
             throw new PacmanConfigurationException(
                 "Input text lines cannot be empty.");
         }
+        return width;
 
+    }
+
+    private void validateLineWidths(List<String> text, int width){
         for (String line : text) {
             if (line.length() != width) {
                 throw new PacmanConfigurationException(
@@ -207,6 +222,8 @@ public class MapParser {
             }
         }
     }
+    
+
 
     /**
      * Parses the provided input stream as a character stream and passes it
