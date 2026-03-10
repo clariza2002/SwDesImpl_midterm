@@ -156,10 +156,10 @@ public class Launcher {
      *            The {@link PacManUiBuilder} that will provide the UI.
      */
     protected void addSinglePlayerKeys(final PacManUiBuilder builder) {
-        builder.addKey(KeyEvent.VK_UP, moveTowardsDirection(Direction.NORTH))
-                .addKey(KeyEvent.VK_DOWN, moveTowardsDirection(Direction.SOUTH))
-                .addKey(KeyEvent.VK_LEFT, moveTowardsDirection(Direction.WEST))
-                .addKey(KeyEvent.VK_RIGHT, moveTowardsDirection(Direction.EAST));
+        builder.addKey(KeyEvent.VK_UP, moveTowardsDirection(Direction.NORTH));
+        builder.addKey(KeyEvent.VK_DOWN, moveTowardsDirection(Direction.SOUTH));
+        builder.addKey(KeyEvent.VK_LEFT, moveTowardsDirection(Direction.WEST));
+        builder.addKey(KeyEvent.VK_RIGHT, moveTowardsDirection(Direction.EAST));
     }
 
     private Action moveTowardsDirection(Direction direction) {
@@ -168,6 +168,7 @@ public class Launcher {
             getGame().move(getSinglePlayer(getGame()), direction);
         };
     }
+    
 
     private Player getSinglePlayer(final Game game) {
         List<Player> players = game.getPlayers();
